@@ -22,8 +22,6 @@ def imp_euler(x0,y0,xf,n):                       #function for Improved Euler’
 		m1=f(x[i], y[i])
 		m2=f(x[i+1], y[i]+h*m1)
 		y.append(y[i] + h*(m1+m2)/2)
-	print(x)
-	print(y)
 	return x,y
 
 def runge_kutta(x0,y0,xf,n):                     #function for Runge-Kutta Method
