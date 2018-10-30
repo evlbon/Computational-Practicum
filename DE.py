@@ -52,13 +52,13 @@ def calc_errors(x0,y0,xf,n1,n2):                 #function where i calculate glo
 
 	for i in range(0,n2-n1):
 		steps[i]=n1+i
-		x,y = exact(x0,y0,xmax,steps[i])
+		x,y = exact(x0,y0,xf,steps[i])
 		ey = y[-1]
-		x,y = euler(x0,y0,xmax,steps[i])
+		x,y = euler(x0,y0,xf,steps[i])
 		errors1[i]=abs(ey-y[-1])
-		x,y = imp_euler(x0,y0,xmax,steps[i])
+		x,y = imp_euler(x0,y0,xf,steps[i])
 		errors2[i]=abs(ey-y[-1])
-		x,y = runge_kutta(x0,y0,xmax,steps[i])
+		x,y = runge_kutta(x0,y0,xf,steps[i])
 		errors3[i]=abs(ey-y[-1])
 	return steps,errors1,errors2,errors3
 
@@ -91,7 +91,7 @@ plt.xlabel('Value of x')
 plt.ylabel('Value of y')
 plt.title('Approximate Solution')
 
-n,e1,e2,e3=calc_errors(x0,y0,xmax,n1,n2+1)
+n,e1,e2,e3=calc_errors(1,1,3,n1,n2+1)
 bx = plt.subplot(212)
 plt.plot(n,e1, 'r-',label="Euler’s Method")
 plt.plot(n,e2, 'b-',label="Improved Euler’s Method")
@@ -111,7 +111,3 @@ ax.legend(loc='upper center', bbox_to_anchor=(0.5, -1.6),
 
 
 plt .show()
-
-
-
-
